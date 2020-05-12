@@ -1,0 +1,7 @@
+name: k8s_custom_types
+version: 1.0.0
+description: Dart Kubernetes Client API - custom types used in the generator
+environment:
+  sdk: '>=2.2.0 <3.0.0'
+dependencies: {}
+

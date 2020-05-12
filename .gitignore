@@ -1,0 +1,6 @@
+/k8s.cert
+.idea
+.dart_tool
+.packages
+target/
+k8s_api/

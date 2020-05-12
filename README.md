@@ -9,16 +9,20 @@ mvn clean
 mvn compile
 ```
 
-A couple of manual fix ups are needed (TBD):
+One minor fixup is needed  (TBD):
 
 Edit k8s_api/lib/api.dart and add:
 ```
 import 'package:k8s_custom_types/k8s_custom_types.dart';
-
 ```
 
-Edit k8s_api/pubspec.yaml and add the following dependency:
-```
-k8s_custom_types:
-    path: ../k8s_custom_types
-```
+Options:
+
+
+https://github.com/OpenAPITools/openapi-generator/tree/master/modules/openapi-generator-maven-plugin
+
+
+
+apisToGenerate - if we want to trim the apois down...
+modelsToGenerate
+

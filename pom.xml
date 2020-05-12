@@ -20,7 +20,7 @@
                     <dependency>
                         <groupId>com.bluetrainsoftware.maven</groupId>
                         <artifactId>openapi-dart-generator</artifactId>
-                        <version>3.1</version>
+                        <version>3.2-SNAPSHOT</version>
                     </dependency>
                 </dependencies>
                 <executions>
@@ -35,16 +35,14 @@
                             <inputSpec>${project.basedir}/src/main/resources/k8s-1.18-openapi.json</inputSpec>
                             <language>dart2-api</language>
                             <enablePostProcessFile>true</enablePostProcessFile>
-                            <importMappings>IntOrString=int_or_string.dart</importMappings>
+<!--                            <importMappings>IntOrString=int_or_string.dart</importMappings>-->
                             <typeMappings>int-or-string=IntOrString</typeMappings>
                             <additionalProperties>
                                 <additionalProperty>pubName=k8s_api</additionalProperty>
-                                <additionalProperty><![CDATA[
-                  pubspec-dependencies=path: '>=1.7.0 <2.0.0',rxdart: 0.24.0]]>
-                                </additionalProperty>
-                                <additionalProperty>
-                                    pubspec-dev-dependencies=uuid: 2.0.4
-                                </additionalProperty>
+                                <additionalProperty>pubspec-dependencies=k8s_custom_types: { path: ../k8s_custom_types }</additionalProperty>
+<!--                                <additionalProperty>-->
+<!--                                    pubspec-dev-dependencies=uuid: 2.0.4-->
+<!--                                </additionalProperty>-->
                             </additionalProperties>
                         </configuration>
 

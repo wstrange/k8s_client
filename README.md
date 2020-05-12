@@ -9,4 +9,16 @@ mvn clean
 mvn compile
 ```
 
-The 
+A couple of manual fix ups are needed (TBD):
+
+Edit k8s_api/lib/api.dart and add:
+```
+import 'package:k8s_custom_types/k8s_custom_types.dart';
+
+```
+
+Edit k8s_api/pubspec.yaml and add the following dependency:
+```
+k8s_custom_types:
+    path: ../k8s_custom_types
+```

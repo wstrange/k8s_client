@@ -9,20 +9,16 @@ mvn clean
 mvn compile
 ```
 
-One minor fixup is needed  (TBD):
 
-Edit k8s_api/lib/api.dart and add:
-```
-import 'package:k8s_custom_types/k8s_custom_types.dart';
-```
-
-Options:
-
-
+TODO:
+Look at code generation options:
 https://github.com/OpenAPITools/openapi-generator/tree/master/modules/openapi-generator-maven-plugin
 
+The API is huge, and we might not want to generate all api calls:
 
+* apisToGenerate - if we want to trim the apis down...
+* modelsToGenerate - trim down the list of models.
 
-apisToGenerate - if we want to trim the apois down...
-modelsToGenerate
+Figure out how to implement support for CRDs
 
+Implement parsing of kubeconfig, in-cluster config, etc.

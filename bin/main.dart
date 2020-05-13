@@ -14,21 +14,19 @@ var token = 'Get the access_token from your ~/.kubeconfig';
 var server = 'https://xx.xx.xx.xx';
 
 void main() async {
-  var _client = k8s.LocalApiClient();
   var _dio = Dio();
   (_dio.httpClientAdapter as DefaultHttpClientAdapter).onHttpClientCreate =
       (HttpClient client) {
-
-    var file = 'k8s.cert';
-    var sc = SecurityContext();
-    // looks like this is not required. Just the bearer token...
-    //sc.setTrustedCertificates(file);
-    var http = HttpClient(context: sc);
-    // meed to ignore SSL cert errors since the host is self signed
-    http.badCertificateCallback =
+      // for client certificate authN, use something like this:
+      //    var sc = SecurityContext();
+      //    sc.setTrustedCertificates(file);
+      //    var http = HttpClient(context: sc);
+    // we need to ignore SSL cert errors since the host is self signed
+    // todo: If we get the host cert, can we use it validate the SSL connection?
+    client.badCertificateCallback =
         (X509Certificate cert, String host, int port) => true;
 
-    return http;
+    return client;
   };
   _dio.interceptors.add((LogInterceptor(responseBody: true)));
 
@@ -43,6 +41,7 @@ void main() async {
   var appsv1 = k8s.AppsV1Api(_api);
   var coreAPI = k8s.CoreV1Api(_api);
 
+  // get a list of Deployments in the nightly namespace
   var r = await appsv1.listAppsV1NamespacedDeployment('nightly');
 
   print('got Meta data = ${r.metadata}');

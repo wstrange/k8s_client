@@ -35,7 +35,7 @@
                             <inputSpec>${project.basedir}/src/main/resources/k8s-1.18-openapi.json</inputSpec>
                             <language>dart2-api</language>
                             <enablePostProcessFile>true</enablePostProcessFile>
-<!--                            <importMappings>IntOrString=int_or_string.dart</importMappings>-->
+                            <importMappings>IntOrString=package:k8s_custom_types/k8s_custom_types.dart</importMappings>
                             <typeMappings>int-or-string=IntOrString</typeMappings>
                             <additionalProperties>
                                 <additionalProperty>pubName=k8s_api</additionalProperty>

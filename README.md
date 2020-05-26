@@ -9,6 +9,11 @@ mvn clean
 mvn compile
 ```
 
+## Fix ups:
+
+Change ` newVal = <>  []..addAll(v)`
+
+to: `newVal = <dynamic>  []..addAll(v)`
 
 TODO:
 Look at code generation options:

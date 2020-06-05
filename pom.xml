@@ -20,7 +20,7 @@
                     <dependency>
                         <groupId>com.bluetrainsoftware.maven</groupId>
                         <artifactId>openapi-dart-generator</artifactId>
-                        <version>3.3</version>
+                        <version>3.4-SNAPSHOT</version>
                     </dependency>
                 </dependencies>
                 <executions>
@@ -32,7 +32,7 @@
                         <phase>generate-sources</phase>
                         <configuration>
                             <output>${project.basedir}/${generated-dart}</output>
-                            <inputSpec>${project.basedir}/src/main/resources/k8s-1.18-openapi.json</inputSpec>
+                            <inputSpec>${project.basedir}/k8s-1.18-openapi.json</inputSpec>
                             <language>dart2-api</language>
                             <enablePostProcessFile>true</enablePostProcessFile>
                             <importMappings>IntOrString=package:k8s_custom_types/k8s_custom_types.dart</importMappings>

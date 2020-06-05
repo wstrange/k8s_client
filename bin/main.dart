@@ -2,16 +2,16 @@ import 'dart:io';
 
 import 'package:dio/adapter.dart';
 import 'package:k8s_api/api.dart' as k8s;
+import 'package:k8s_client/util/kube_config.dart';
 import 'package:openapi_dart_common/openapi.dart';
 import 'package:dio/dio.dart';
 
 
 // Get the access token. On GKE this must be renewed every 5 min
 
-var token = 'Get the access_token from your ~/.kubeconfig';
 
 // the k8s api.
-var server = 'https://xx.xx.xx.xx';
+var server = 'https://104.196.170.22';
 
 void main() async {
   var _dio = Dio();
@@ -30,8 +30,12 @@ void main() async {
   };
   _dio.interceptors.add((LogInterceptor(responseBody: true)));
 
-  var st = token.replaceAll(RegExp(r"\s\b|\b\s"), "");
-  var oauth = OAuth(accessToken: st);
+  var kubeConfig = KubeConfig();
+
+
+  var token = await kubeConfig.getAccessToken();
+
+  var oauth = OAuth(accessToken: token);
 
   var _api = ApiClient(
       basePath: server,

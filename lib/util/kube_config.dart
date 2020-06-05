@@ -65,6 +65,8 @@ class KubeConfig {
     return true;
   }
 
+  String get currentServer => currentCluster['server'];
+
   Future<String> getAccessToken() async {
     if (currentUser == null) {
       return null;

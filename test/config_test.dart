@@ -20,6 +20,9 @@ main() {
 
     var token = await config.getAccessToken();
     expect(token,isNotNull);
+
+    var server = config.currentServer;
+    expect(server,startsWith('http'));
   });
 
 

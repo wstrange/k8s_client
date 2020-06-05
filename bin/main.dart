@@ -10,9 +10,6 @@ import 'package:dio/dio.dart';
 // Get the access token. On GKE this must be renewed every 5 min
 
 
-// the k8s api.
-var server = 'https://104.196.170.22';
-
 void main() async {
   var _dio = Dio();
   (_dio.httpClientAdapter as DefaultHttpClientAdapter).onHttpClientCreate =
@@ -32,8 +29,8 @@ void main() async {
 
   var kubeConfig = KubeConfig();
 
-
   var token = await kubeConfig.getAccessToken();
+  var server = kubeConfig.currentServer;
 
   var oauth = OAuth(accessToken: token);
 
